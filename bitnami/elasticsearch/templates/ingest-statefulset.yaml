@@ -21,6 +21,7 @@ spec:
       app.kubernetes.io/component: ingest
   replicas: {{ .Values.ingest.replicas }}
   serviceName: {{ include "elasticsearch.ingest.fullname" . }}-headless
+  podManagementPolicy: Parallel
   template:
     metadata:
       labels: {{- include "elasticsearch.labels" . | nindent 8 }}

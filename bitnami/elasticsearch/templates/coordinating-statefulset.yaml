@@ -20,6 +20,7 @@ spec:
       app.kubernetes.io/component: coordinating-only
   replicas: {{ .Values.coordinating.replicas }}
   serviceName: {{ include "elasticsearch.coordinating.fullname" . }}-headless
+  podManagementPolicy: Parallel
   template:
     metadata:
       labels: {{- include "elasticsearch.labels" . | nindent 8 }}
