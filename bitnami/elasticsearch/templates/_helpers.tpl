@@ -143,7 +143,7 @@ Return the hostname of every ElasticSearch master-eligible node
 {{- $masterReplicaCount := int .Values.master.replicas }}
 {{- $masterFullname := include "elasticsearch.master.fullname" . }}
 {{- range $e, $i := until $masterReplicaCount }}
-{{- $masterFullname }}-{{ $i }}.{{ $masterFullname }}-headless.{{ $releaseNamespace }}.svc.{{ $clusterDomain }},
+{{- $masterFullname }}-{{ $i }},
 {{- end -}}
 {{- end -}}
 
