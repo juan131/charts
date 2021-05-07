@@ -29,7 +29,7 @@ It also packages the [Bitnami PostgreSQL chart](https://github.com/bitnami/chart
 
 ## Prerequisites
 
-- Kubernetes 1.15+ (tested with Azure Kubernetes Service, Google Kubernetes Engine, minikube and Docker for Desktop Kubernetes)
+- Kubernetes 1.16+ (tested with both bare-metal and managed clusters, including EKS, AKS, GKE and Tanzu Kubernetes Grid, as well as dev clusters, such as Kind, Minikube and Docker for Desktop Kubernetes)
 - Helm 3.0.2+
 - Administrative access to the cluster to create Custom Resource Definitions (CRDs)
 - PV provisioner support in the underlying infrastructure (required for PostgreSQL database)
@@ -551,7 +551,7 @@ In the first two cases, it's needed a certificate and a key. We would expect the
 
 - If you are going to use Helm to manage the certificates based on the parameters, please copy these values into the `certificate` and `key` values for a given `ingress.secrets` entry.
 - In case you are going to manage TLS secrets separately, please know that you must use a TLS secret with name *INGRESS_HOSTNAME-tls* (where *INGRESS_HOSTNAME* is a placeholder to be replaced with the hostname you set using the `ingress.hostname` parameter).
-- To use self-signed certificates created by Helm, set bot `ingress.tls` and `ingress.selfSigned` to `true`.
+- To use self-signed certificates created by Helm, set both `ingress.tls` and `ingress.selfSigned` to `true`.
 - If your cluster has a [cert-manager](https://github.com/jetstack/cert-manager) add-on to automate the management and issuance of TLS certificates, set `ingress.certManager` boolean to true to enable the corresponding annotations for cert-manager.
 
 ## Upgrading Kubeapps
