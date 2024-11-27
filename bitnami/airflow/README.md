@@ -361,6 +361,7 @@ The Bitnami Airflow chart relies on the PostgreSQL chart persistence. This means
 | `global.defaultStorageClass`                          | Global default StorageClass for Persistent Volume(s)                                                                                                                                                                                                                                                                                                                | `""`    |
 | `global.compatibility.openshift.adaptSecurityContext` | Adapt the securityContext sections of the deployment to make them compatible with Openshift restricted-v2 SCC: remove runAsUser, runAsGroup and fsGroup and let the platform use their allowed default IDs. Possible values: auto (apply if the detected running cluster is Openshift), force (perform the adaptation always), disabled (do not perform adaptation) | `auto`  |
 | `global.compatibility.omitEmptySeLinuxOptions`        | If set to true, removes the seLinuxOptions from the securityContexts when it is set to an empty object                                                                                                                                                                                                                                                              | `false` |
+| `global.security.allowInsecureImages`                 | By default, this chart verifies that the original container images that were designed, tested, and validated are used. This option makes the chart skip the verification step and proceed                                                                                                                                                                           | `false` |
 
 ### Common parameters
 
@@ -1267,6 +1268,12 @@ helm install my-release -f values.yaml oci://REGISTRY_NAME/REPOSITORY_NAME/airfl
 Find more information about how to deal with common errors related to Bitnami's Helm charts in [this troubleshooting guide](https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues).
 
 ## Upgrading
+
+### To 22.4.0
+
+Starting from this minor version, the Bitnami Airflow chart verifies that the original container images that were designed, tested, and validated are used.
+
+This container image verification can be skipped by setting the global parameter `global.security.allowInsecureImages` to `true`. Further information can be obtained at [this GitHub issue](LINK TO GITHUB PINNED ISSUE).
 
 ### To 22.2.0
 
